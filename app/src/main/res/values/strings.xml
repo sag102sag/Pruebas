@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Pruebas</string>
+    <string name="inicio">Inicio</string>
+    <string name="ajustes">Ajustes</string>
+    <string name="idiomas">Idiomas</string>
+    <string name="atr_s">Atrás</string>
+    <string name="abrir_men">Abrir Menú</string>
+    <string name="fecha_seleccionada">Fecha seleccionada</string>
+    <string name="hora_seleccionada">Hora seleccionada</string>
+</resources>
