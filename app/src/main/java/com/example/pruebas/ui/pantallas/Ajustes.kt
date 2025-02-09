@@ -22,6 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.example.pruebas.R
+import com.example.pruebas.modelo.ModeloPruebaFechaYHora
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -39,6 +40,8 @@ fun Ajustes(
     var botonFechaPulsado by remember { mutableStateOf(false) }
     var botonHoraPulsado by remember { mutableStateOf(false) }
 
+    var fecha by remember { mutableStateOf("") }
+    var hora by remember { mutableStateOf("") }
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier.fillMaxWidth()
@@ -73,8 +76,8 @@ fun Ajustes(
         if (fechaElegida != null) {
             val date = Date(fechaElegida!!)
             val formattedDate = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(date)
+            fecha=formattedDate
 
-            Text(text = stringResource(R.string.fecha_seleccionada, formattedDate)+": "+ formattedDate)
         }
         else {
             Text(text = "Ninguna fecha seleccionada")
@@ -84,12 +87,14 @@ fun Ajustes(
             val cal = Calendar.getInstance()
             cal.set(Calendar.HOUR_OF_DAY, horaElegida!!.hour)
             cal.set(Calendar.MINUTE, horaElegida!!.minute)
-
-            Text(text = "Hora seleccionada" + cal.get(Calendar.HOUR_OF_DAY) +":"+ cal.get(Calendar.MINUTE))
+            hora= cal.get(Calendar.HOUR_OF_DAY).toString() +":"+ cal.get(Calendar.MINUTE)
         }
         else {
             Text(text = "Ninguna hora seleccionada")
         }
+        val fechaYHora = ModeloPruebaFechaYHora(fecha = fecha, hora = hora)
+        Text("Fecha del objeto: "+fechaYHora.fecha)
+        Text("Hora del objeto: "+fechaYHora.hora)
     }
 }
 
